@@ -1,0 +1,11 @@
+{
+    "/techapi":{
+        "target":"http://localhost",
+        "secure": false ,
+        "logLevel": "debug",
+        "pathRewrite": {    
+            "^tech": ""
+        },
+        "changeOrigin":true
+    }
+}

@@ -1,0 +1,30 @@
+.button-container {
+    position: relative;
+    margin-top: 5rem;
+    text-align: center
+}
+
+.add {
+    position: relative;
+    margin-right: 5rem;
+    float: right;
+    border: 1px solid rgb(103, 151, 196);
+    padding : 10px;
+}
+
+.fa-plus-circle {
+    position: relative;
+    font-size: 50px;
+}
+
+.table {
+    position: relative;
+    margin-left: 5rem;
+    margin-right: auto; 
+    margin-top:10rem;
+    align-items: center
+}
+
+table {
+    width: 80%;
+  }

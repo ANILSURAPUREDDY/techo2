@@ -1,0 +1,34 @@
+<div class="table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+            <ng-container matColumnDef="bill_number">
+                <th mat-header-cell *matHeaderCellDef> Bill Number </th>
+                <td mat-cell *matCellDef="let element"> {{element.bill_number}} </td>
+                <td mat-footer-cell *matFooterCellDef>  </td>
+            </ng-container>
+                  
+                    <!-- Weight Column -->
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.created_date | date }} </td>
+                <td mat-footer-cell *matFooterCellDef> Total </td>
+            </ng-container>
+
+            <ng-container matColumnDef="total">
+                    <th mat-header-cell *matHeaderCellDef> Total </th>
+                    <td mat-cell *matCellDef="let element"> {{element.total | currency:'INR'}} </td>
+                    <td mat-footer-cell *matFooterCellDef>  {{getTotal() | currency:'INR'}}</td>
+                </ng-container>
+    
+            <!-- <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td mat-cell *matCellDef="let element" class="action-link"> 
+                      <a (click)="editDialog('Update',element)">Edit</a>
+                    </td>
+                  </ng-container> -->
+                
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+        </table>
+    </div>

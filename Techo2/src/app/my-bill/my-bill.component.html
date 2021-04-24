@@ -1,0 +1,53 @@
+
+
+<h4>Basic mat-select</h4>
+<form [formGroup]="myBillForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Favorite food</mat-label>
+        <mat-select formControlName="selected_item">
+            <mat-option *ngFor="let food of list" [value]="food._id" >
+            {{food.item_name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>&nbsp;&nbsp;
+    <mat-form-field class="example-full-width"> 
+        <mat-label>Quantity</mat-label>
+        <input type="number" matInput placeholder="12" formControlName="quantity">
+    </mat-form-field>
+    <button mat-raised-button color="accent" [disabled]="!myBillForm.valid">Items</button>
+</form>
+
+<div class="table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="item_name">
+                <th mat-header-cell *matHeaderCellDef> Item Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.item_name}} </td>
+                <td mat-footer-cell *matFooterCellDef>  </td>
+               
+            </ng-container>
+
+            <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef> Price </th>
+                <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                <td mat-footer-cell *matFooterCellDef>  </td>
+            </ng-container>
+
+            <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+                <td mat-footer-cell *matFooterCellDef> Total </td>
+            </ng-container>
+                  
+                    <!-- Weight Column -->
+            <ng-container matColumnDef="total">
+                <th mat-header-cell *matHeaderCellDef> Amount </th>
+                <td mat-cell *matCellDef="let element"> {{element.total | currency:'INR'}} </td>
+                <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency:'INR'}} </td>
+            </ng-container>
+                
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+        </table>
+    </div>

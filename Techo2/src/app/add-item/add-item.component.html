@@ -1,0 +1,25 @@
+
+<!-- <mat-card-title>Add Items</mat-card-title> -->
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+<mat-dialog-content>
+   
+        <p>
+            <mat-form-field>
+                <input matInput placeholder="Item Name" formControlName="item_name">
+                <mat-error class="error-message" *ngIf="addForm.get('item_name').hasError('required')"> Item Name is required !</mat-error>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
+                <input matInput placeholder="Price" formControlName="price">
+                <mat-error class="error-message" *ngIf="addForm.get('price').hasError('required')"> Price is required !</mat-error>
+                <mat-error class="error-message" *ngIf="addForm.get('price').hasError('min')"> Price Should be more than 1 rupee !</mat-error>
+            </mat-form-field>
+        </p>  
+      
+</mat-dialog-content>
+<mat-dialog-actions>
+        <button class="mat-raised-button" (click)="close()">Close</button> &nbsp;&nbsp;
+        <button class="mat-raised-button mat-primary" [disabled]="!addForm.valid">Save</button>
+    </mat-dialog-actions>
+</form>  
